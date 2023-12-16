@@ -15,13 +15,14 @@ defineProps<Props>();
     <div class="text-h5 q-pb-md">{{ title }}</div>
     <div>
       <div class="row">
-        <div v-for="item in items" class="col-4" :key="item.id">
+        <div v-for="item in items" class="col-3" :key="item.id">
           <channel-list-item
             :name="item.name"
             :url-image="item.icopath"
             :url-video="item.liveurl"
             :genres="item.programm.genres"
             :programm-name="item.programm.programm_name"
+            :programm-id="item.programm.id"
           />
         </div>
       </div>

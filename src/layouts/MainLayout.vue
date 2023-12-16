@@ -1,9 +1,10 @@
+<script setup lang="ts">
+import AppBar from 'components/layout/AppBar.vue';
+</script>
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title> LimeTV </q-toolbar-title>
-      </q-toolbar>
+      <app-bar />
     </q-header>
     <q-page-container style="max-width: 1256px; margin: 0 auto">
       <q-page class="q-py-lg">
@@ -12,5 +13,3 @@
     </q-page-container>
   </q-layout>
 </template>
-
-<script setup lang="ts"></script>

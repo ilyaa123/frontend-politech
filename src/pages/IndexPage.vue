@@ -2,13 +2,21 @@
 import { computed } from 'vue';
 
 import ChannelList from 'components/channels/ChannelList.vue';
+import ChannelFilter from 'components/channels/ChannelFilter.vue';
 
 import { useChannelsStore } from 'stores/channel';
 
 const channelStore = useChannelsStore();
 
-const popularityChannels = computed(() => channelStore.channels);
+const channels = computed(() => channelStore.channels);
+
+const popularityChannels = computed(() => channelStore.popularityChannels);
 </script>
 <template>
-  <ChannelList title="Популярное" :items="popularityChannels" />
+  <div>
+    <ChannelList title="Популярное" :items="popularityChannels" />
+    <q-separator class="q-my-lg" />
+    <ChannelFilter :genres="channelStore.genres" />
+    <ChannelList title="" :items="channels" />
+  </div>
 </template>
