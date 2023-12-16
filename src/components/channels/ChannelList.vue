@@ -19,7 +19,6 @@ defineProps<Props>();
           <channel-list-item
             :name="item.name"
             :url-image="item.icopath"
-            :url-video="item.liveurl"
             :genres="item.programm.genres"
             :programm-name="item.programm.programm_name"
             :programm-id="item.programm.id"

@@ -1,64 +1,29 @@
 import { defineStore } from 'pinia';
-import { api } from 'src/boot/axios';
 import { ref } from 'vue';
 
 import { Genre } from 'src/types/genres';
 import { Channel } from 'src/types/channel';
 
 import channelsMocks from 'src/mocks/channels';
+import genresMocks from 'src/mocks/genres';
+import { getChannels, getPopularityChannel } from 'src/api/channels';
 
 export const useChannelsStore = defineStore('channels', () => {
-  const channels = ref<Channel[]>(channelsMocks);
+  const channels = ref<Channel[]>([]);
 
-  const popularityChannels = ref<Channel[]>([
-    {
-      id: 1,
-      name: 'Первый канал',
-      icopath: 'https://cdn.quasar.dev/img/mountains.jpg',
-      liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
-      programm: {
-        id: 1,
-        channelId: 1,
-        programm_name: 'test1',
-        description:
-          'Актуальные сюжеты на злобу дня, отличный юмор и море позитива! Короткие анекдотические ситуации разыгрывают шесть блестящих комедийных актеров: Галина Данилова, Ирина Медведева, Эдуард Радзюкевич, Андрей Кайков, Федор Добронравов и Сергей Дорогов. Впрограмме в гротескном виде представлена повседневная жизнь обычного россиянина.',
-        genres: [
-          {
-            idprogram: 1,
-            genre: 'Драма',
-          },
-          {
-            idprogram: 2,
-            genre: 'Комедия',
-          },
-        ],
-      },
-    },
-  ]);
+  const popularityChannels = ref<Channel[]>([]);
 
-  const genres = ref<Genre[]>([
-    {
-      idprogram: 1,
-      genre: 'Драма',
-    },
-    {
-      idprogram: 2,
-      genre: 'Комедия',
-    },
-    {
-      idprogram: 3,
-      genre: 'Романтика',
-    },
-    {
-      idprogram: 4,
-      genre: 'Детектив',
-    },
-  ]);
+  const genres = ref<Genre[]>(genresMocks);
 
-  const getChannels = async () => {
-    return api.get<{ channels: Channel[] }>('').then((res) => {
-      channels.value = res.data.channels;
-      return res.data;
+  const fetchChannels = async (data: { genriesIds?: number[] | null }) => {
+    getChannels(data).then((res) => {
+      channels.value = res.data;
+    });
+  };
+
+  const fetchPopularityChannels = async () => {
+    getPopularityChannel().then((res) => {
+      popularityChannels.value = res.data;
     });
   };
 
@@ -80,7 +45,8 @@ export const useChannelsStore = defineStore('channels', () => {
     genres,
     channels,
     popularityChannels,
-    getChannels,
+    fetchChannels,
+    fetchPopularityChannels,
     searchChannels,
   };
 });

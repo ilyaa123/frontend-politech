@@ -10,7 +10,6 @@ const favoritesStore = useFavoritesStore();
 interface Props {
   name: string;
   urlImage: string;
-  urlVideo: string;
   programmName: string;
   genres: Genre[];
   programmId: number;
@@ -41,27 +40,26 @@ const isVisible = ref(false);
         @mouseleave="isVisible = false"
         @mouseover="isVisible = true"
       >
-        <template v-if="isVisible">
-          <div
-            class="text-subtitle2 absolute-top text-right"
-            style="background-color: inherit"
-          >
-            <q-btn
-              round
-              color="primary"
-              size="sm"
-              :icon="isAddedToFavorites ? 'mdi-heart' : 'mdi-heart-outline'"
-              @click="handleOnFavorites"
-            />
-          </div>
-          <div
-            v-show="isVisible"
-            class="absolute-bottom text-subtitle1 text-left"
-            @mouseover.stop
-          >
-            {{ programmName }}
-          </div>
-        </template>
+        <div
+          v-if="isVisible || isAddedToFavorites"
+          class="text-subtitle2 absolute-top text-right"
+          style="background-color: inherit"
+        >
+          <q-btn
+            round
+            color="primary"
+            size="sm"
+            :icon="isAddedToFavorites ? 'mdi-heart' : 'mdi-heart-outline'"
+            @click="handleOnFavorites"
+          />
+        </div>
+        <div
+          v-show="isVisible"
+          class="absolute-bottom text-subtitle1 text-left"
+          @mouseover.stop
+        >
+          {{ programmName }}
+        </div>
       </q-img>
     </span>
 
@@ -77,7 +75,7 @@ const isVisible = ref(false);
           icon="mdi-pound"
           size="sm"
         >
-          {{ genre.genre }}
+          {{ genre.name }}
         </q-chip>
       </template>
     </q-card-actions>

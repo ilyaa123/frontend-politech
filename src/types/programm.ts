@@ -5,5 +5,6 @@ export type Programm = {
   programm_name: string;
   description: string;
   channelId: number;
+  rating: number;
   genres: Genre[];
 };

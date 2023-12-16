@@ -15,7 +15,6 @@ defineProps<Props>();
       v-for="item in items"
       :key="item.id"
       :name="item.name"
-      :description="item.name"
       :image-url="'https://cdn.quasar.dev/img/mountains.jpg'"
     />
   </div>

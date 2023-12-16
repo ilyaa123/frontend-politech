@@ -6,4 +6,5 @@ export type Channel = {
   icopath: string;
   liveurl: string;
   programm: Programm;
+  programms: Programm[];
 };
