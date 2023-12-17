@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
 import { Channel } from 'src/types/channel';
 
 import ProgrammTable from 'components/programm/ProgrammCard/ProgrammTable.vue';
 
 import { useProgrammStore } from 'stores/programm';
+import channels from 'src/mocks/channels';
 
 interface Props {
   channel: Channel | null;
@@ -11,7 +13,15 @@ interface Props {
 
 const programmStore = useProgrammStore();
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const selectedDate = ref(new Date().toLocaleDateString());
+
+const currentShedules = computed(() =>
+  props.channel?.shedules.find(
+    (item) => String(item.date) == String(selectedDate.value)
+  )
+);
 </script>
 <template>
   <div v-if="channel">
@@ -53,6 +63,10 @@ defineProps<Props>();
         </q-card-section>
       </q-card-section>
     </q-card>
-    <ProgrammTable :shedules="channel.shedules" />
+    <ProgrammTable
+      :date="selectedDate"
+      :shedules="currentShedules?.shedules || []"
+      @set-date="(date) => (selectedDate = date)"
+    />
   </div>
 </template>

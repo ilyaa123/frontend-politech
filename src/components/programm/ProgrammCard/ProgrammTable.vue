@@ -6,10 +6,17 @@ import { Shedule } from 'src/types/shedule';
 import { useProgrammStore } from 'stores/programm';
 
 interface Props {
+  date: string;
   shedules: Shedule[];
 }
 
-defineProps<Props>();
+interface Emits {
+  (key: 'setDate', value: string): void;
+}
+
+const props = defineProps<Props>();
+
+const emits = defineEmits<Emits>();
 
 const programmStore = useProgrammStore();
 
@@ -27,17 +34,65 @@ const columns: QTableProps['columns'] = [
     align: 'right',
   },
 ];
+
+const handleOnNext = () => {
+  const components = props.date.split('.');
+  const day = parseInt(components[0]);
+  const month = parseInt(components[1]) - 1;
+  const year = parseInt(components[2]);
+
+  const date = new Date(year, month, day);
+
+  date.setDate(date.getDate() + 1);
+
+  const newDateString =
+    date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+
+  emits('setDate', newDateString);
+};
+
+const handleOnPrev = () => {
+  const components = props.date.split('.');
+  const day = parseInt(components[0]);
+  const month = parseInt(components[1]) - 1;
+  const year = parseInt(components[2]);
+
+  const date = new Date(year, month, day);
+
+  date.setDate(date.getDate() - 1);
+
+  const newDateString =
+    date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+  emits('setDate', newDateString);
+};
 </script>
 <template>
   <q-table
     :columns="columns"
     :rows="shedules"
-    title="Расписание"
+    :title="'Расписание на ' + date"
+    no-data-label="Ничего не надено"
     style="width: 100%"
     flat
     hide-bottom
-    hide-header
   >
+    <template #top>
+      <div class="row justify-between align-center text-h6" style="width: 100%">
+        <q-btn
+          round
+          color="primary"
+          icon="mdi-arrow-left"
+          @click="handleOnPrev"
+        />
+        Расписание на {{ date }}
+        <q-btn
+          round
+          color="primary"
+          icon="mdi-arrow-right"
+          @click="handleOnNext"
+        />
+      </div>
+    </template>
     <template #body="props">
       <q-tr :props="props">
         <q-td key="time" :props="props">

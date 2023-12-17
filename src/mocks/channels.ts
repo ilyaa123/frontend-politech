@@ -47,7 +47,36 @@ export default [
     liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
     programms: [Programm1, Programm3, Programm2],
     programm: Programm1,
-    shedules: [Shedule1, Shedule3, Shedule2],
+    shedules: [
+      {
+        date: '17.12.2023',
+        shedules: [Shedule1, Shedule3, Shedule2],
+      },
+      {
+        date: '18.12.2023',
+        shedules: [Shedule3],
+      },
+      {
+        date: '19.12.2023',
+        shedules: [Shedule2],
+      },
+      {
+        date: '20.12.2023',
+        shedules: [Shedule1],
+      },
+      {
+        date: '21.12.2023',
+        shedules: [Shedule3, Shedule2],
+      },
+      {
+        date: '22.12.2023',
+        shedules: [Shedule3, Shedule1],
+      },
+      {
+        date: '23.12.2023',
+        shedules: [Shedule1],
+      },
+    ],
   },
   {
     id: 2,
@@ -57,7 +86,40 @@ export default [
     liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
     programms: [Programm3, Programm4, Programm5],
     programm: Programm3,
-    shedules: [Shedule3, Shedule4, Shedule5],
+    shedules: [
+      {
+        date: '17.12.2023',
+        shedules: [Shedule3, Shedule4, Shedule5],
+      },
+      {
+        date: '18.12.2023',
+        shedules: [Shedule3, Shedule4],
+      },
+      {
+        date: '19.12.2023',
+        shedules: [Shedule4],
+      },
+      {
+        date: '20.12.2023',
+        shedules: [Shedule3],
+      },
+      {
+        date: '21.12.2023',
+        shedules: [Shedule5, Shedule4],
+      },
+      {
+        date: '22.12.2023',
+        shedules: [Shedule3, Shedule4],
+      },
+      {
+        date: '23.12.2023',
+        shedules: [Shedule5],
+      },
+      {
+        date: '24.12.2023',
+        shedules: [Shedule3],
+      },
+    ],
   },
   {
     id: 3,
@@ -67,7 +129,36 @@ export default [
     liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
     programms: [Programm7, Programm8, Programm9],
     programm: Programm7,
-    shedules: [Shedule7, Shedule8, Shedule9],
+    shedules: [
+      {
+        date: '17.12.2023',
+        shedules: [Shedule7, Shedule8, Shedule9],
+      },
+      {
+        date: '18.12.2023',
+        shedules: [Shedule8, Shedule9],
+      },
+      {
+        date: '19.12.2023',
+        shedules: [Shedule7],
+      },
+      {
+        date: '20.12.2023',
+        shedules: [Shedule7, Shedule9],
+      },
+      {
+        date: '21.12.2023',
+        shedules: [Shedule8, Shedule9],
+      },
+      {
+        date: '22.12.2023',
+        shedules: [Shedule9],
+      },
+      {
+        date: '23.12.2023',
+        shedules: [Shedule9, Shedule7],
+      },
+    ],
   },
   {
     id: 4,
@@ -77,7 +168,36 @@ export default [
     liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
     programms: [Programm10, Programm11, Programm12],
     programm: Programm10,
-    shedules: [Shedule10, Shedule11, Shedule12],
+    shedules: [
+      {
+        date: '17.12.2023',
+        shedules: [Shedule10, Shedule11, Shedule12],
+      },
+      {
+        date: '18.12.2023',
+        shedules: [Shedule11, Shedule10],
+      },
+      {
+        date: '19.12.2023',
+        shedules: [Shedule11],
+      },
+      {
+        date: '20.12.2023',
+        shedules: [Shedule10, Shedule11],
+      },
+      {
+        date: '21.12.2023',
+        shedules: [Shedule10, Shedule12],
+      },
+      {
+        date: '22.12.2023',
+        shedules: [Shedule12],
+      },
+      {
+        date: '23.12.2023',
+        shedules: [Shedule10],
+      },
+    ],
   },
   {
     id: 5,
@@ -87,7 +207,36 @@ export default [
     liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
     programms: [Programm14, Programm3, Programm15],
     programm: Programm15,
-    shedules: [Shedule14, Shedule3, Shedule15],
+    shedules: [
+      {
+        date: '17.12.2023',
+        shedules: [Shedule14, Shedule3, Shedule15],
+      },
+      {
+        date: '18.12.2023',
+        shedules: [Shedule3, Shedule15],
+      },
+      {
+        date: '19.12.2023',
+        shedules: [Shedule14, Shedule15],
+      },
+      {
+        date: '20.12.2023',
+        shedules: [Shedule14],
+      },
+      {
+        date: '21.12.2023',
+        shedules: [Shedule15],
+      },
+      {
+        date: '22.12.2023',
+        shedules: [Shedule3, Shedule14],
+      },
+      {
+        date: '23.12.2023',
+        shedules: [Shedule3],
+      },
+    ],
   },
   {
     id: 6,
@@ -95,8 +244,37 @@ export default [
     icopath:
       'https://i.pinimg.com/564x/07/6c/1b/076c1b7bff8b499048be9b3994f6df72.jpg',
     liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
-    programms: [Programm16, Programm6, Programm13],
+    programms: [Programm16, Programm6, Programm13, Programm1],
     programm: Programm13,
-    shedules: [Shedule16, Shedule13],
+    shedules: [
+      {
+        date: '17.12.2023',
+        shedules: [Shedule16, Shedule13, Shedule1],
+      },
+      {
+        date: '18.12.2023',
+        shedules: [Shedule16, Shedule13],
+      },
+      {
+        date: '19.12.2023',
+        shedules: [Shedule1],
+      },
+      {
+        date: '20.12.2023',
+        shedules: [Shedule16, Shedule1],
+      },
+      {
+        date: '21.12.2023',
+        shedules: [Shedule1, Shedule13],
+      },
+      {
+        date: '22.12.2023',
+        shedules: [Shedule1],
+      },
+      {
+        date: '23.12.2023',
+        shedules: [Shedule16],
+      },
+    ],
   },
 ];
