@@ -1,28 +1,30 @@
 <script setup lang="ts">
 import { Genre } from 'src/types/genres';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 interface Props {
   genres: Genre[];
+  selectedGenries: number[];
 }
 
 interface Emits {
   (key: 'changeFilter', value: number[]): void;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emits = defineEmits<Emits>();
 
-const selectedGenries = ref<number[]>([]);
+const selectedGenries = computed(() => props.selectedGenries);
 
 const handleOnAddGenries = (genry: Genre) => {
-  selectedGenries.value?.push(genry.id);
+  emits('changeFilter', [...selectedGenries.value, genry.id]);
 };
 
 const handleOnRemoveGenries = (genry: Genre) => {
-  selectedGenries.value = [...selectedGenries.value].filter(
-    (item) => item !== genry.id
+  emits(
+    'changeFilter',
+    [...selectedGenries.value].filter((item) => item !== genry.id)
   );
 };
 
@@ -36,7 +38,6 @@ const handleOnSetGenry = (genry: Genre) => {
   } else {
     handleOnAddGenries(genry);
   }
-  emits('changeFilter', selectedGenries.value);
 };
 </script>
 <template>

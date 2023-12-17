@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import AppBar from 'components/layout/AppBar.vue';
+
+import Modals from 'components/layout/Modals/index.vue';
 </script>
 <template>
   <q-layout view="lHh Lpr lFf">
@@ -11,5 +13,6 @@ import AppBar from 'components/layout/AppBar.vue';
         <router-view />
       </q-page>
     </q-page-container>
+    <Modals />
   </q-layout>
 </template>

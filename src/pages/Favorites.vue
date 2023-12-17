@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import ChannelListItem from 'components/favorites/FavoritesList.vue';
+import FavoritesList from 'components/favorites/FavoritesList.vue';
 
 import { useFavoritesStore } from 'stores/favorites';
 
@@ -16,5 +16,8 @@ favoritesStore.getFavorites().then((res) => {
 });
 </script>
 <template>
-  <ChannelListItem :items="favorites" />
+  <div>
+    <div></div>
+    <FavoritesList :items="favorites" />
+  </div>
 </template>

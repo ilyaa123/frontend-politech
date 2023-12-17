@@ -6,7 +6,12 @@ import { Channel } from 'src/types/channel';
 
 import channelsMocks from 'src/mocks/channels';
 import genresMocks from 'src/mocks/genres';
-import { getChannels, getPopularityChannel } from 'src/api/channels';
+import {
+  getChannels,
+  getChennel,
+  getPopularityChannel,
+  searchChannels,
+} from 'src/api/channels';
 
 export const useChannelsStore = defineStore('channels', () => {
   const channels = ref<Channel[]>([]);
@@ -27,17 +32,13 @@ export const useChannelsStore = defineStore('channels', () => {
     });
   };
 
-  const searchChannels = async (value?: string) => {
-    return new Promise<Channel[]>((resolve, reject) => {
-      const resultItems = channelsMocks.filter((item) =>
-        item.name.includes(value || '')
-      );
+  const search = async (value?: string) => {
+    return searchChannels(value);
+  };
 
-      if (resultItems.length == 0) {
-        reject('Not find');
-      } else {
-        resolve(resultItems);
-      }
+  const getChannelItem = async (id: number) => {
+    return getChennel(id).then((res) => {
+      return res.data;
     });
   };
 
@@ -45,8 +46,9 @@ export const useChannelsStore = defineStore('channels', () => {
     genres,
     channels,
     popularityChannels,
+    getChannelItem,
     fetchChannels,
     fetchPopularityChannels,
-    searchChannels,
+    search,
   };
 });

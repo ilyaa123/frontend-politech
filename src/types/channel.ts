@@ -1,4 +1,5 @@
 import { Programm } from './programm';
+import { Shedule } from './shedule';
 
 export type Channel = {
   id: number;
@@ -7,4 +8,5 @@ export type Channel = {
   liveurl: string;
   programm: Programm;
   programms: Programm[];
+  shedules: Shedule[];
 };

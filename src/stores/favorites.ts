@@ -21,7 +21,7 @@ export const useFavoritesStore = defineStore('favorites', () => {
   const getFavorites = async () => {
     return new Promise<Channel[]>((resolve) => {
       const res = channelsMocks.filter((item) =>
-        favorites.value.includes(item.id)
+        favorites.value.includes(item.programm.id)
       );
       resolve(res);
     });

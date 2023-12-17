@@ -23,7 +23,7 @@ const search = ref('');
         bottom-slots
         hide-bottom-space
         dense
-        standout="bg-teal text-white"
+        width="200px"
       >
         <template v-slot:append>
           <q-icon

@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
+import { useRouter } from 'vue-router';
+
 import { Genre } from 'src/types/genres';
 
 import { useFavoritesStore } from 'stores/favorites';
+import { useProgrammStore } from 'stores/programm';
+
+const router = useRouter();
 
 const favoritesStore = useFavoritesStore();
+const programmStore = useProgrammStore();
 
 interface Props {
+  id: number;
   name: string;
   urlImage: string;
-  programmName: string;
   genres: Genre[];
   programmId: number;
+  programmName: string;
+  programmRating: number;
 }
 
 const props = defineProps<Props>();
@@ -32,10 +40,11 @@ const handleOnFavorites = () => {
 const isVisible = ref(false);
 </script>
 <template>
-  <q-card class="my-card q-ma-sm">
+  <q-card flat class="my-card q-ma-sm">
     <span>
       <q-img
-        src="https://cdn.quasar.dev/img/mountains.jpg"
+        :src="urlImage"
+        height="200px"
         @mouseenter="isVisible = true"
         @mouseleave="isVisible = false"
         @mouseover="isVisible = true"
@@ -55,16 +64,29 @@ const isVisible = ref(false);
         </div>
         <div
           v-show="isVisible"
-          class="absolute-bottom text-subtitle1 text-left"
+          class="absolute-bottom text-subtitle1 text-left cursor-pointer row justify-between items-center"
+          style="width: 100%"
           @mouseover.stop
+          @click="programmStore.setSelectedProgramm(programmId)"
         >
           {{ programmName }}
+          <q-chip color="accent" size="sm">
+            <q-avatar color="primary" text-color="white">{{
+              programmRating
+            }}</q-avatar>
+            Рейтинг
+          </q-chip>
         </div>
       </q-img>
     </span>
 
     <q-card-section>
-      <div class="text-h6">{{ name }}</div>
+      <div
+        class="text-h6 cursor-pointer"
+        @click="router.push(`/channel/${id}`)"
+      >
+        {{ name }}
+      </div>
     </q-card-section>
     <q-card-actions align="left">
       <template v-for="genre in genres" :key="genre.idprogram">

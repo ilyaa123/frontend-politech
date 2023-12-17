@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ChannelListItem from 'components/channels/ChannelListItem.vue';
+import ChannelListItem from 'components/channels/List/ChannelListItem.vue';
 
 import { Channel } from 'src/types/channel';
 
@@ -17,11 +17,13 @@ defineProps<Props>();
       <div class="row">
         <div v-for="item in items" class="col-3" :key="item.id">
           <channel-list-item
+            :id="item.id"
             :name="item.name"
             :url-image="item.icopath"
             :genres="item.programm.genres"
             :programm-name="item.programm.programm_name"
             :programm-id="item.programm.id"
+            :programm-rating="item.programm.rating"
           />
         </div>
       </div>
