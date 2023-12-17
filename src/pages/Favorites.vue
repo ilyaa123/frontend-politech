@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 import FavoritesList from 'components/favorites/FavoritesList.vue';
 
@@ -14,6 +14,15 @@ const favorites = ref<Channel[]>([]);
 favoritesStore.getFavorites().then((res) => {
   favorites.value = res;
 });
+
+watch(
+  () => favoritesStore.favorites,
+  () => {
+    favoritesStore.getFavorites().then((res) => {
+      favorites.value = res;
+    });
+  }
+);
 </script>
 <template>
   <div>

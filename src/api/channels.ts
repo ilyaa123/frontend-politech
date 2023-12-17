@@ -40,13 +40,31 @@ export const getChennel = async (id: number) => {
 
 export const getPopularityChannel = async () => {
   return new Promise<{ data: Channel[] }>((resolve) => {
-    const data = channelsMocks
-      .sort(
-        (a, b) =>
-          Math.max(...a.programms.map((programm) => Number(programm.rating))) -
-          Math.max(...b.programms.map((programm) => Number(programm.rating)))
-      )
+    const data = [...channelsMocks]
+      .sort((a, b) => {
+        // const maxA = Math.max(
+        //   ...a.programms.map((programm) => Number(programm.rating))
+        // );
+
+        // const maxB = Math.max(
+        //   ...b.programms.map((programm) => Number(programm.rating))
+        // );
+
+        const maxA = Number(a.programm.rating);
+
+        const maxB = Number(b.programm.rating);
+
+        if (maxA > maxB) {
+          return 1;
+        } else if (maxA < maxB) {
+          return -1;
+        } else {
+          return 0;
+        }
+      })
+      .reverse()
       .slice(0, 3);
+
     resolve({ data });
   });
 };

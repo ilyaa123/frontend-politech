@@ -13,6 +13,10 @@ export const useFavoritesStore = defineStore('favorites', () => {
   };
 
   const removeInFavorites = (id_channel: number) => {
+    console.log(
+      '🚀 ~ file: favorites.ts:16 ~ removeInFavorites ~ id_channel:',
+      id_channel
+    );
     favorites.value = [...favorites.value].filter(
       (favorit) => favorit !== id_channel
     );

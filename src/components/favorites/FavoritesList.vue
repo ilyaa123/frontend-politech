@@ -7,8 +7,7 @@ interface Props {
   items: Channel[];
 }
 
-const props = defineProps<Props>();
-console.log('🚀 ~ file: FavoritesList.vue:11 ~ props:', props.items);
+defineProps<Props>();
 </script>
 <template>
   <div class="text-left q-py-lg text-h5">Избранное</div>
@@ -17,8 +16,9 @@ console.log('🚀 ~ file: FavoritesList.vue:11 ~ props:', props.items);
       v-for="item in items"
       :key="item.id"
       :id="item.id"
+      :programm-id="item.programm.id"
       :name="item.name"
-      :image-url="'https://cdn.quasar.dev/img/mountains.jpg'"
+      :image-url="item.icopath"
     />
   </div>
   <div v-else class="text-center q-py-lg text-h5">В избранном ничего нет</div>
