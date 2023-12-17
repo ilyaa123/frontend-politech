@@ -140,11 +140,33 @@ module.exports = configure(function (/* ctx */) {
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa
     pwa: {
-      workboxMode: 'generateSW', // or 'injectManifest'
-      injectPwaMetaTags: true,
-      swFilename: 'sw.js',
-      manifestFilename: 'manifest.json',
-      useCredentialsForManifestTag: false,
+      workboxMode: 'injectManifest', // or 'injectManifest | generateSW'
+      // injectPwaMetaTags: true,
+      // swFilename: 'sw.js',
+      // manifestFilename: 'manifest.json',
+      // useCredentialsForManifestTag: false,
+      workboxOptions: {},
+      manifest: {
+        name: 'Shows',
+        short_name: 'LimeTv Shows',
+        description: 'LimeTv Shows',
+        icons: [
+          {
+            src: 'icons/tv-48.png',
+            sizes: '48x48',
+            type: 'image/png',
+          },
+          {
+            src: 'icons/tv-96.png',
+            sizes: '96x96',
+            type: 'image/png',
+          },
+        ],
+        display: 'standalone',
+        orientation: 'portrait',
+        background_color: '#ffffff',
+        theme_color: '#d8e25b',
+      },
       // useFilenameHashes: true,
       // extendGenerateSWOptions (cfg) {}
       // extendInjectManifestOptions (cfg) {},

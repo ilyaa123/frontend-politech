@@ -22,6 +22,12 @@ const currentShedules = computed(() =>
     (item) => String(item.date) == String(selectedDate.value)
   )
 );
+
+const date = computed(() => selectedDate.value);
+
+const handleOnUpdateDate = (date: string) => {
+  selectedDate.value = date;
+};
 </script>
 <template>
   <div v-if="channel">
@@ -64,9 +70,9 @@ const currentShedules = computed(() =>
       </q-card-section>
     </q-card>
     <ProgrammTable
-      :date="selectedDate"
+      :date="date"
       :shedules="currentShedules?.shedules || []"
-      @set-date="(date) => (selectedDate = date)"
+      @set-date="handleOnUpdateDate"
     />
   </div>
 </template>
