@@ -84,7 +84,7 @@ export default [
     icopath:
       'https://i.pinimg.com/564x/f4/22/e6/f422e67774bed0580d0bb82cfb31ca6c.jpg',
     liveurl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
-    programms: [Programm3, Programm4, Programm5],
+    programms: [Programm3, Programm4, Programm5, Programm17],
     programm: Programm3,
     shedules: [
       {
@@ -97,7 +97,7 @@ export default [
       },
       {
         date: '19.12.2023',
-        shedules: [Shedule4],
+        shedules: [Shedule4, Programm17],
       },
       {
         date: '20.12.2023',
@@ -249,7 +249,7 @@ export default [
     shedules: [
       {
         date: '17.12.2023',
-        shedules: [Shedule16, Shedule13, Shedule1],
+        shedules: [Shedule16, Shedule13, Shedule1, Shedule6],
       },
       {
         date: '18.12.2023',
@@ -257,7 +257,7 @@ export default [
       },
       {
         date: '19.12.2023',
-        shedules: [Shedule1],
+        shedules: [Shedule1, Shedule6],
       },
       {
         date: '20.12.2023',

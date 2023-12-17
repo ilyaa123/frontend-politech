@@ -141,10 +141,10 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa
     pwa: {
       workboxMode: 'injectManifest', // or 'injectManifest | generateSW'
-      // injectPwaMetaTags: true,
+      injectPwaMetaTags: true,
       // swFilename: 'sw.js',
       // manifestFilename: 'manifest.json',
-      // useCredentialsForManifestTag: false,
+      useCredentialsForManifestTag: false,
       workboxOptions: {},
       manifest: {
         name: 'Shows',
@@ -153,12 +153,12 @@ module.exports = configure(function (/* ctx */) {
         icons: [
           {
             src: 'icons/tv-48.png',
-            sizes: '48x48',
+            sizes: '128x128',
             type: 'image/png',
           },
           {
             src: 'icons/tv-96.png',
-            sizes: '96x96',
+            sizes: '192x192',
             type: 'image/png',
           },
         ],
