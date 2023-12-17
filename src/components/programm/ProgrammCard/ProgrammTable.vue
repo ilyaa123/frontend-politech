@@ -4,6 +4,7 @@ import { QTableProps } from 'quasar';
 import { Shedule } from 'src/types/shedule';
 
 import { useProgrammStore } from 'stores/programm';
+import { computed } from 'vue';
 
 interface Props {
   date: string;
@@ -34,6 +35,8 @@ const columns: QTableProps['columns'] = [
     align: 'right',
   },
 ];
+
+const title = computed(() => 'Расписание на ' + props.date);
 
 const handleOnNext = () => {
   const components = props.date.split('.');
@@ -70,7 +73,7 @@ const handleOnPrev = () => {
   <q-table
     :columns="columns"
     :rows="shedules"
-    :title="'Расписание на ' + date"
+    :title="title"
     no-data-label="Ничего не надено"
     style="width: 100%"
     flat
